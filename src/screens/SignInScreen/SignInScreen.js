@@ -7,23 +7,31 @@ import {
   View,
 } from 'react-native';
 import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 import Logo from '../../../assets/images/Logo_1.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
+import SocialSignInButtons from '../../components/SocialSignInButtons';
 
 const SignInScreen = () => {
+  const navigation = useNavigation();
+
   const height = Dimensions.get('screen').height;
 
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
   const signInPressed = () => {
-    console.log('pressed');
+    navigation.navigate('Home');
   };
 
   const forgotPasswordPressed = () => {
-    console.log('pressed');
+    navigation.navigate('ForgotPassword');
+  };
+
+  const onSignUpPressed = () => {
+    navigation.navigate('SignUp');
   };
 
   return (
@@ -51,26 +59,9 @@ const SignInScreen = () => {
           text="Forgot Password?"
           type="TERTIARY"
         />
+        <SocialSignInButtons />
         <CustomButton
-          onPress={signInPressed}
-          text="Sign In with Facebook"
-          fgColor="#4765A9"
-          bgColor="#E7EAF4"
-        />
-        <CustomButton
-          onPress={signInPressed}
-          text="Sign In with Google"
-          fgColor="#DD4D44"
-          bgColor="#FAE9EA"
-        />
-        <CustomButton
-          onPress={signInPressed}
-          text="Sign In with Apple"
-          fgColor="#363636"
-          bgColor="#e3e3e3"
-        />
-        <CustomButton
-          onPress={forgotPasswordPressed}
+          onPress={onSignUpPressed}
           text="Don't have an account? Create one"
           type="TERTIARY"
         />
